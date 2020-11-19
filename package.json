@@ -1,0 +1,29 @@
+{
+  "name": "articlereadcounter",
+  "version": "1.0.0",
+  "description": "Updates article read count on api request",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Driesss/ArticleReadCounter.git"
+  },
+  "author": "Dries Stelten",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Driesss/ArticleReadCounter/issues"
+  },
+  "homepage": "https://github.com/Driesss/ArticleReadCounter#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "fastify": "^3.8.0",
+    "fastify-postgres": "^3.3.0",
+    "fastify-redis": "^4.0.3",
+    "pg": "^8.5.1",
+    "pg-promise": "^10.8.0"
+  }
+}
