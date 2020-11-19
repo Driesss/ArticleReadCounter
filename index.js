@@ -16,33 +16,8 @@ fastify.register(require('fastify-redis'), { host: REDIS_HOST, password: REDIS_P
 fastify.register(require('fastify-postgres'), { connectionString: `postgresql://${POSTGRES_USER}:${POSTGRES_PASS}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}` })
 fastify.register(require('./plugins/dbworker'))
 
-// Declare a route
-fastify.route({
-    method: 'POST',
-    url: '/',
-    schema: {
-        // request needs to have a body with an `id` parameter
-        body: {
-            id: { type: 'string' }
-        },
-        // the response needs to be an object with an `hello` property of type 'string'
-        response: {
-            204: {
-                type: 'null',
-            }
-        }
-    },
-    // this function is executed for every request before the handler is executed
-    preHandler: async (request, reply) => {
-        // E.g. check authentication
-    },
-    handler: async (request, reply) => {
-        const { body } = request
-        const { redis } = fastify
-        await redis.incr(body.id)
-        reply.code(204)
-    }
-})
+fastify.register(require('./api/articles'), { prefix: '/api/articles' })
+
 
 // Run the server!
 const start = async () => {
