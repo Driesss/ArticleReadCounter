@@ -10,7 +10,7 @@ const POSTGRES_HOST = process.env.POSTGRES_HOST || 'localhost'
 const POSTGRES_USER = process.env.POSTGRES_USER || 'postgres'
 const POSTGRES_PASS = process.env.POSTGRES_PASS || 'postgres'
 const POSTGRES_PORT = process.env.POSTGRES_PORT || '5432'
-const POSTGRES_DB = "nieuwsblad"
+const POSTGRES_DB = process.env.POSTGRES_DB
 
 fastify.register(require('fastify-redis'), { host: REDIS_HOST, password: REDIS_PASS })
 fastify.register(require('fastify-postgres'), { connectionString: `postgresql://${POSTGRES_USER}:${POSTGRES_PASS}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}` })
