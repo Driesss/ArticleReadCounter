@@ -17,9 +17,9 @@ module.exports = function (fastify, opts, done) {
         }
         const rowQuery = await client.query('SELECT COUNT(id) FROM articles')
         const rowCount = rowQuery.rows[0].count;
-        const pageCount = Math.ceil(rowCount / pagesize)
+        const totalPageCount = Math.ceil(rowCount / pagesize)
         client.release()
-        return { results: result.rows, pageCount, currentPage: request.query.page }
+        return { results: result.rows, pageCount: totalPageCount, currentPage: request.query.page }
 
     })
     fastify.get('/', async (request, reply) => {
